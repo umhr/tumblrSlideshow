@@ -64,6 +64,8 @@ package
 		{
 			if (_navigaterBar.count == 0) {
 				Tween24.tween(_navigaterBar, 0.2).y( -_navigaterBar.height).play();
+			}else if (_navigaterBar.count == -100) {
+				_navigaterBar.check();
 			}else if (_navigaterBar.count == -500){
 				Tween24.tween(_navigaterBar, 0.3).y( 0).play();
 			}

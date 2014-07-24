@@ -87,7 +87,6 @@ package
 			addChild(btnLabel);
 			
 			
-			
 		}
 		
 		private function input_mouseDown(e:MouseEvent):void 
@@ -102,12 +101,16 @@ package
 		
 		private function btn_mouseDown(e:MouseEvent):void 
 		{
+			check();
+		}
+		public function check():void {
 			if (DataManager.getInstance().userName != input.text) {
 				DataManager.getInstance().userName = input.text;
 				dispatchEvent(new Event(Event.CHANGE));
 			}else {
 				dispatchEvent(new Event(Event.CLOSE));
 			}
+			
 		}
 		
 	}

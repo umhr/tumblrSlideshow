@@ -20,6 +20,8 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
+			stage.scaleMode = "noScale";
+			stage.align = "TL";
 			
 			addChild(new Canvas());
 		}

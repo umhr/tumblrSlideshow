@@ -6,6 +6,9 @@ package
 	import flash.events.EventDispatcher;
 	import flash.events.IOErrorEvent;
 	import flash.net.SharedObject;
+	import flash.system.LoaderContext;
+	import flash.system.Security;
+	import flash.system.SecurityDomain;
 	/**
 	 * ...
 	 * @author umhr
@@ -30,7 +33,6 @@ package
 				userName = name;
 			}
 			
-			trace(name);
 		}
 		
 		public function start():void {
@@ -87,7 +89,9 @@ package
 			var n:int = _postDataList.length;
 			for (var i:int = 0; i < n; i++) 
 			{
-				_bulkLoader.add(_postDataList[i].url, { id:"img" + i, type:BulkLoader.TYPE_IMAGE } );
+				var lc:LoaderContext = new LoaderContext();
+				lc.checkPolicyFile = true;
+				_bulkLoader.add(_postDataList[i].url, { id:"img" + i, type:BulkLoader.TYPE_IMAGE,context:lc } );
 			}
 			_bulkLoader.addEventListener("complete", onImgComp);
 			_bulkLoader.start();
